@@ -1,0 +1,6 @@
+@lmschalenge01_HostAddress = http://localhost:5114
+
+GET {{lmschalenge01_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
