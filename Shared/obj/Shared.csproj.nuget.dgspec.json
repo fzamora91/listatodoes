@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Shared\\Shared.csproj": {}
+    "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Shared\\Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Shared\\Shared.csproj": {
+    "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Shared\\Shared.csproj",
+        "projectPath": "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Shared\\Shared.csproj",
         "packagesPath": "C:\\Users\\fzamora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fzamora\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -23,7 +23,6 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "http://172.16.1.114:8000/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,6 +45,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

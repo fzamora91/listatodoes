@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\fzamora\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\fzamora\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,7 +29,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "http://172.16.1.114:8000/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -71,13 +70,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1803",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Está ejecutando la operación \"restore\" con un origen \"HTTP\", \"http://172.16.1.114:8000/nuget\". El acceso que no sea HTTPS se quitará en una versión futura. Considere la posibilidad de migrar a un origen \"HTTPS\"."
-    }
-  ]
+  }
 }

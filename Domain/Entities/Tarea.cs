@@ -8,6 +8,7 @@ namespace Domain.Entities
 {
     public class Tarea : BaseEntity
     {
+        public Tarea() { }
         public required string title { get; set; }
         public required string description { get; set; }
         public required string status { get; set; }
