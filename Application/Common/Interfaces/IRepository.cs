@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.UseCases.Tareas.Queries.GetTareasPaginada;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Application.Common.Interfaces
         IQueryable<T> GetAll();
 
         Task<IEnumerable<T>> GetAllAsync();
+
+        Task<PaginatedResult<T>> GetAllAsync(int pagenumber, int pagesize);
 
         Task<T?> GetByIdAsync(Guid id);
 

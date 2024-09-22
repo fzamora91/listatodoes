@@ -11,6 +11,6 @@ namespace Application.Common.Interfaces
 {
     public interface IApplicationDbContext
     {
-        DbSet<Tarea> Transaction { get; set; }
+        DbSet<Tarea> Tarea { get; set; }
     }
 }
