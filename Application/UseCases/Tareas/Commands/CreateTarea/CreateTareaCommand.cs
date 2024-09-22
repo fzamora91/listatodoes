@@ -12,13 +12,22 @@ namespace Application.UseCases.Tareas.Commands.CreateTarea
         {
             public async Task<Result<CreateTareaCommandDto>> Handle(CreateTareaCommand request, CancellationToken cancellationToken)
             {
+
+
+                var validation = new CreateTareaCommandValidator();
+                var validationResult = await validation.ValidateAsync(request);
+                if (validationResult.Errors.Count > 0) throw new Exception(validationResult.ToString());
+
+
                 var tarea = new Tarea()
                 {
                     Id = request.Id,
                     title = request.Title,
-                    description="",
-                    status=""
+                    description=request.Description,
+                    status=request.Status
                 };
+
+                
 
                 await repository.AddAsync(tarea);
 
