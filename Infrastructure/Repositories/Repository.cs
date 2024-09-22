@@ -5,6 +5,7 @@ using Infrastructure.Common.Factories;
 using Infrastructure.Data;
 using Application.UseCases.Tareas.Queries.GetTareasPaginada;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories
 {
@@ -33,29 +34,47 @@ namespace Infrastructure.Repositories
             return await Set.ToListAsync();
         }
 
+
+        // Método para aplicar el orden dinámico
+        private IQueryable<T> ApplyOrdering(IQueryable<T> query, string orderByProperty, bool isAscending)
+        {
+            // Crear una expresión lambda para la propiedad
+            var parameter = Expression.Parameter(typeof(T), "x");
+            var property = Expression.Property(parameter, orderByProperty);
+            var lambda = Expression.Lambda(property, parameter);
+
+            // Construir la consulta dinamicamente con OrderBy u OrderByDescending
+            string methodName = isAscending ? "OrderBy" : "OrderByDescending";
+
+            // Obtener el método de LINQ dinámicamente
+            var orderByMethod = typeof(Queryable).GetMethods()
+                                    .Where(m => m.Name == methodName && m.GetParameters().Length == 2)
+                                    .Single()
+                                    .MakeGenericMethod(typeof(T), property.Type);
+
+            // Aplicar el método OrderBy o OrderByDescending
+            return (IQueryable<T>)orderByMethod.Invoke(null, new object[] { query, lambda });
+        }
+
+
         public async Task<PaginatedResult<T>> GetAllAsync(int pagenumber, int pagesize, string orderByProperty, bool isAscending)
         {
             var total = await Set.CountAsync();
-           
 
-            string ordering = isAscending ? orderByProperty : $"{orderByProperty} desc";
 
+            // Obtener la queryable base
             var query = Set.AsQueryable();
 
+            // Aplicar el orden dinámico
+            query = ApplyOrdering(query, orderByProperty, isAscending);
 
+            // Paginación
+            var tareas = await query
+                                .Skip((pagenumber - 1) * pagesize)
+                                .Take(pagesize)
+                                .ToListAsync();
 
-            var tareas = this.GetAllAsync().Result.Skip((pagenumber - 1) * pagesize).Take(pagesize).ToList();
             return new PaginatedResult<T>(tareas, pagenumber, pagesize, total);
-
-
-
-            /*_context.Tarea
-            .Skip((pagenumber - 1) * pagesize)
-            .Take(pagesize).ToList<T>();*/
-
-            //.Select(u=>new  { Id = u.Id, Title = u.title, Description = u.description, Status = u.status }).ToList();
-
-
         }
 
         public async Task<T?> GetByIdAsync(Guid id)
