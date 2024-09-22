@@ -15,7 +15,7 @@ namespace Application.Common.Interfaces
 
         Task<IEnumerable<T>> GetAllAsync();
 
-        Task<PaginatedResult<T>> GetAllAsync(int pagenumber, int pagesize);
+        Task<PaginatedResult<T>> GetAllAsync(int pagenumber, int pagesize, string orderByProperty, bool isAscending);
 
         Task<T?> GetByIdAsync(Guid id);
 

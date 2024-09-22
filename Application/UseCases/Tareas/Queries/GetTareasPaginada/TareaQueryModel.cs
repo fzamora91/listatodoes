@@ -10,5 +10,7 @@ namespace Application.UseCases.Tareas.Queries.GetTareasPaginada
     {
         public required int PageNumber { get; set; }
         public required int PageSize { get; set; }
+        public required string orderByProperty { get; set; }
+        public required bool isAscending { get; set; }
     }
 }

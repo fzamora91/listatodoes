@@ -19,7 +19,7 @@ namespace Application.UseCases.Tareas.Queries.GetTareasPaginada
         {
             public async Task<PaginatedResult<Tarea>> Handle(GetTareaPaginationQuery request, CancellationToken cancellationToken)
             {
-                var result = await repository.GetAllAsync(request.PageNumber, request.PageSize);
+                var result = await repository.GetAllAsync(request.PageNumber, request.PageSize, request.orderByProperty, request.isAscending);
 
                 return new PaginatedResult<Tarea>(result.Items, request.PageNumber, request.PageSize, result.Items.Count);
 
