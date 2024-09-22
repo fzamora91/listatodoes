@@ -1,15 +1,30 @@
 {
   "version": 2,
-  "dgSpecHash": "bO9R5C/gFZs=",
+  "dgSpecHash": "HhupxbtdzCk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\fzamora\\source\\repos\\lmschalenge01\\Application\\Application.csproj",
-  "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1803",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Está ejecutando la operación \"restore\" con un origen \"HTTP\", \"http://172.16.1.114:8000/nuget\". El acceso que no sea HTTPS se quitará en una versión futura. Considere la posibilidad de migrar a un origen \"HTTPS\"."
-    }
-  ]
+  "projectFilePath": "C:\\Users\\fzamora\\source\\repos\\listatodoes\\listatodoes\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fzamora\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\extensions.configuration\\0.0.4\\extensions.configuration.0.0.4.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\extensions.configuration.resolver\\0.0.4\\extensions.configuration.resolver.0.0.4.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\extensions.configuration.sources.objects\\0.0.2\\extensions.configuration.sources.objects.0.0.2.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.2\\fluentvalidation.dependencyinjectionextensions.11.9.2.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.8\\microsoft.entityframeworkcore.8.0.8.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.8\\microsoft.entityframeworkcore.abstractions.8.0.8.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.8\\microsoft.entityframeworkcore.analyzers.8.0.8.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.0.0\\microsoft.extensions.configuration.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\fzamora\\.nuget\\packages\\system.collections.immutable\\1.7.0\\system.collections.immutable.1.7.0.nupkg.sha512"
+  ],
+  "logs": []
 }
