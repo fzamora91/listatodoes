@@ -1,6 +1,6 @@
 @lmsChalenge_HostAddress = http://localhost:5062
 
-GET {{lmsChalenge_HostAddress}}/weatherforecast/
+GET {{lmsChalenge_HostAddress}}/swagger/
 Accept: application/json
 
 ###
