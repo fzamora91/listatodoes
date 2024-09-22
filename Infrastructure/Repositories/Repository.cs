@@ -33,19 +33,29 @@ namespace Infrastructure.Repositories
             return await Set.ToListAsync();
         }
 
-        public async Task<PaginatedResult<T>> GetAllAsync(int pagenumber, int pagesize)
+        public async Task<PaginatedResult<T>> GetAllAsync(int pagenumber, int pagesize, string orderByProperty, bool isAscending)
         {
             var total = await Set.CountAsync();
+           
+
+            string ordering = isAscending ? orderByProperty : $"{orderByProperty} desc";
+
+            var query = Set.AsQueryable();
+
+
 
             var tareas = this.GetAllAsync().Result.Skip((pagenumber - 1) * pagesize).Take(pagesize).ToList();
-                
-                /*_context.Tarea
-                .Skip((pagenumber - 1) * pagesize)
-                .Take(pagesize).ToList<T>();*/
+            return new PaginatedResult<T>(tareas, pagenumber, pagesize, total);
 
-                //.Select(u=>new  { Id = u.Id, Title = u.title, Description = u.description, Status = u.status }).ToList();
 
-            return  new PaginatedResult<T>(tareas, pagenumber, pagesize, total);
+
+            /*_context.Tarea
+            .Skip((pagenumber - 1) * pagesize)
+            .Take(pagesize).ToList<T>();*/
+
+            //.Select(u=>new  { Id = u.Id, Title = u.title, Description = u.description, Status = u.status }).ToList();
+
+
         }
 
         public async Task<T?> GetByIdAsync(Guid id)
