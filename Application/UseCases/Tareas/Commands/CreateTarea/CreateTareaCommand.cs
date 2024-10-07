@@ -8,7 +8,7 @@ namespace Application.UseCases.Tareas.Commands.CreateTarea
 {
     public class CreateTareaCommand : CreateTareaCommandModel, IRequest<Result<CreateTareaCommandDto>>
     {
-        public class CreateTransactionCommandHandler(IRepository<Tarea> repository) : UseCaseHandler, IRequestHandler<CreateTareaCommand, Result<CreateTareaCommandDto>>
+        public class CreateTransactionCommandHandler(IRepository<Tarea> repository, ILogService logService) : UseCaseHandler, IRequestHandler<CreateTareaCommand, Result<CreateTareaCommandDto>>
         {
             public async Task<Result<CreateTareaCommandDto>> Handle(CreateTareaCommand request, CancellationToken cancellationToken)
             {
@@ -27,15 +27,35 @@ namespace Application.UseCases.Tareas.Commands.CreateTarea
                     status=request.Status
                 };
 
-                
 
-                await repository.AddAsync(tarea);
 
                 var response = new CreateTareaCommandDto()
                 {
                     Success = true
                 };
 
+
+                await repository.AddAsync(tarea);
+
+                try
+                {
+
+                    /*LogDto log = new LogDto();
+
+                    log.Log.Id = Guid.NewGuid().ToString();
+                    log.Log.Description = "Task Created Succesfully";
+                    log.Log.Date = DateTime.UtcNow;
+                    log.Log.Type = Domain.Enum.LogType.Information;*/
+
+                    await logService.LogInformationAsync("Task Created Succesfully");
+
+                }
+                catch(Exception exp)
+                {
+
+                }
+
+                
                 return Succeded(response);
             }
         }

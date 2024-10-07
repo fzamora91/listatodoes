@@ -15,7 +15,7 @@ namespace Application.UseCases.Tareas.Commands.CompleteTarea
     public class CompleteTareaCommand : CompleteTareaCommandModel, IRequest<Result<CompleteTareaCommandDto>>
     {
         public class UpdateTransactionCommandHandler(
-            IRepository<Tarea> transactionRepository) : UseCaseHandler, IRequestHandler<CompleteTareaCommand, Result<CompleteTareaCommandDto>>
+            IRepository<Tarea> transactionRepository, ILogService logService) : UseCaseHandler, IRequestHandler<CompleteTareaCommand, Result<CompleteTareaCommandDto>>
         {
             public async Task<Result<CompleteTareaCommandDto>> Handle(CompleteTareaCommand request, CancellationToken cancellationToken)
             {
@@ -36,6 +36,24 @@ namespace Application.UseCases.Tareas.Commands.CompleteTarea
                 await transactionRepository.UpdateAsync(tarea);
 
                 var resultData = new CompleteTareaCommandDto { Success = true };
+
+                try
+                {
+
+                    /*LogDto log = new LogDto();
+
+                    log.Log.Id = Guid.NewGuid().ToString();
+                    log.Log.Description = "Task Created Succesfully";
+                    log.Log.Date = DateTime.UtcNow;
+                    log.Log.Type = Domain.Enum.LogType.Information;*/
+
+                    await logService.LogInformationAsync("Task Created Succesfully");
+
+                }
+                catch (Exception exp)
+                {
+
+                }
 
                 return this.Succeded(resultData);
             }

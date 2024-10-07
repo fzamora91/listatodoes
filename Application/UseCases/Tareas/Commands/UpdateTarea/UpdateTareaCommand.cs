@@ -15,7 +15,7 @@ namespace Application.UseCases.Tareas.Commands.UpdateTarea
     public class UpdateTareaCommand : UpdateTareaCommandModel, IRequest<Result<UpdateTareaCommandDto>>
     {
         public class UpdateTransactionCommandHandler(
-            IRepository<Tarea> transactionRepository) : UseCaseHandler, IRequestHandler<UpdateTareaCommand, Result<UpdateTareaCommandDto>>
+            IRepository<Tarea> transactionRepository, ILogService logService) : UseCaseHandler, IRequestHandler<UpdateTareaCommand, Result<UpdateTareaCommandDto>>
         {
             public async Task<Result<UpdateTareaCommandDto>> Handle(UpdateTareaCommand request, CancellationToken cancellationToken)
             {
@@ -36,6 +36,24 @@ namespace Application.UseCases.Tareas.Commands.UpdateTarea
                 await transactionRepository.UpdateAsync(tarea);
 
                 var resultData = new UpdateTareaCommandDto { Success = true };
+
+                try
+                {
+
+                    /*LogDto log = new LogDto();
+
+                    log.Log.Id = Guid.NewGuid().ToString();
+                    log.Log.Description = "Task Created Succesfully";
+                    log.Log.Date = DateTime.UtcNow;
+                    log.Log.Type = Domain.Enum.LogType.Information;*/
+
+                    await logService.LogInformationAsync("Task Created Succesfully");
+
+                }
+                catch (Exception exp)
+                {
+
+                }
 
                 return this.Succeded(resultData);
             }

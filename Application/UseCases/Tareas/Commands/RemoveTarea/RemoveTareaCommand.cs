@@ -15,7 +15,7 @@ namespace Application.UseCases.Tareas.Commands.RemoveTarea
     public class RemoveTareaCommand : RemoveTareaCommandModel, IRequest<Result<RemoveTareaCommandDto>>
     {
         public class RemoveTareaCommandHandler(
-            IRepository<Tarea> tareaRepository) : UseCaseHandler, IRequestHandler<RemoveTareaCommand, Result<RemoveTareaCommandDto>>
+            IRepository<Tarea> tareaRepository, ILogService logService) : UseCaseHandler, IRequestHandler<RemoveTareaCommand, Result<RemoveTareaCommandDto>>
         {
             public async Task<Result<RemoveTareaCommandDto>> Handle(RemoveTareaCommand request, CancellationToken cancellationToken)
             {
@@ -31,6 +31,25 @@ namespace Application.UseCases.Tareas.Commands.RemoveTarea
                 await tareaRepository.RemoveAsync(tarea);
 
                 var resultData = new RemoveTareaCommandDto { Success = true };
+
+                try
+                {
+
+                    /*LogDto log = new LogDto();
+
+                    log.Log.Id = Guid.NewGuid().ToString();
+                    log.Log.Description = "Task Created Succesfully";
+                    log.Log.Date = DateTime.UtcNow;
+                    log.Log.Type = Domain.Enum.LogType.Information;*/
+
+
+                    await logService.LogInformationAsync("Task Created Succesfully");
+
+                }
+                catch (Exception exp)
+                {
+
+                }
 
                 return this.Succeded(resultData);
             }

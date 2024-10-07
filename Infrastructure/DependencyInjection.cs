@@ -37,6 +37,8 @@ namespace Infrastructure
             });
 
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(IExternalService<>), typeof(ExternalService<>));
+            services.AddTransient(typeof(ILogService), typeof(LogService));
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
             services.AddSingleton(TimeProvider.System);
