@@ -1,7 +1,9 @@
 ﻿using Application.Common.Interfaces;
 using Application.UseCases.Common.Handlers;
 using Application.UseCases.Common.Results;
+using Application.UseCases.Tareas.Commands.Kafka;
 using Application.UseCases.Tareas.Commands.RemoveTarea;
+using Domain;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -40,12 +42,12 @@ namespace Application.UseCases.Tareas.Commands.UpdateTarea
                 try
                 {
 
-                    /*LogDto log = new LogDto();
+                    ICommandSender<OrderCommand> commandSender = new KafkaCommandProducer();
+                    var orderHandler = new SendOrderCommandHandler(commandSender);
 
-                    log.Log.Id = Guid.NewGuid().ToString();
-                    log.Log.Description = "Task Created Succesfully";
-                    log.Log.Date = DateTime.UtcNow;
-                    log.Log.Type = Domain.Enum.LogType.Information;*/
+                    // Enviamos un comando (orden de ejemplo)
+                    var orderCommand = new OrderCommand { OrderId = Guid.NewGuid().ToString(), ProductName = "Task Updated Succesfully" };
+                    await orderHandler.HandleAsync(orderCommand);
 
                     await logService.LogInformationAsync("Task Created Succesfully");
 

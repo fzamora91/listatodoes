@@ -1,4 +1,6 @@
 ﻿using Application.Common.Interfaces;
+using Application.UseCases.Tareas.Commands.Kafka;
+using Domain;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,9 @@ namespace Infrastructure.Repositories
 
         public async Task LogInformationAsync(string description)
         {
+
+            
+
             LogDto log = new LogDto
             {
                 Log = new Log
@@ -29,6 +34,10 @@ namespace Infrastructure.Repositories
                     Type = Domain.Enum.LogType.Information
                 }
             };
+
+
+
+
             await logRepository.Create(log);
         }
 
